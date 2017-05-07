@@ -1,0 +1,10 @@
+.button{
+	-fx-background-color: #000000;
+	-fx-text-fill: #FFFFFF;
+	-fx-border-color: #FFFFFF;
+}
+.pane{
+	-fx-pref-height: 600;
+	-fx-pref-width: 900;
+	-fx-background-color:#000000;
+}
