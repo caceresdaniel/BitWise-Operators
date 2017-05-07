@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -11,6 +12,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class GUI extends Application{
+	
+	File file = new File("negativecat.ppm");
+	SubPPMImage sub = new SubPPMImage(file);
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -18,8 +22,7 @@ public class GUI extends Application{
 		primaryStage.setTitle("BitWise Encoding?");
 		
 		Pane pane = new Pane();
-		Scene sc = new Scene(pane, 1000, 1000);
-		File file = new File("cat.ppm");
+		Scene sc = new Scene(pane);
 		Image image = SwingFXUtils.toFXImage(ImageIO.read(file), null);
 		
 		ImageView imgview = new ImageView();
@@ -28,8 +31,15 @@ public class GUI extends Application{
 		
 		pane.getChildren().add(imgview);
 		
+		//main();
+		
 		primaryStage.setScene(sc);
 		primaryStage.show();
+	}
+	
+	public void main(){
+
+		sub.negative();
 	}
 	
 	public static void main(String[] args) {
