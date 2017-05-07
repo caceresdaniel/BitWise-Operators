@@ -25,9 +25,6 @@ public class SubPPMImage extends PPMImage {
 			bits[i + 1] = (char) ((red * .299) + (green * .587) + (blue * .114));
 			bits[i + 2] = (char) ((red * .299) + (green * .587) + (blue * .114));
 		}
-
-		writeImage("graycat.ppm");
-
 	}
 
 	public void sepia() {
@@ -52,9 +49,6 @@ public class SubPPMImage extends PPMImage {
 			}
 
 		}
-
-		writeImage("sepiacat.ppm");
-
 	}
 
 	public void negative() {
@@ -65,7 +59,5 @@ public class SubPPMImage extends PPMImage {
 			bits[i + 1] = (char) (255 - bits[i + 1]);
 			bits[i + 2] = (char) (255 - bits[i + 2]);
 		}
-
-		writeImage("negativecat.ppm");
 	}
 }

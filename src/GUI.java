@@ -2,6 +2,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
@@ -9,8 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class GUI extends Application {
@@ -18,7 +19,7 @@ public class GUI extends Application {
 	HBox buttons = new HBox();
 	HBox imageContainer = new HBox();
 
-	Pane pane = new Pane();
+	BorderPane pane = new BorderPane();
 
 	File file;
 
@@ -38,11 +39,12 @@ public class GUI extends Application {
 
 		primaryStage.setTitle("BitWise Encoding?");
 
-		Scene sc = new Scene(pane, 1000, 1000);
+		Scene sc = new Scene(pane, 900, 600);
 
 		buttons.getChildren().addAll(grabButt, enButt, readButt, grayButt, negButt, sepButt);
 		
-		pane.getChildren().addAll(buttons, imageContainer);
+		pane.setTop(buttons);
+		pane.setCenter(imageContainer);
 
 		grabButton();
 		sepButton();
@@ -67,6 +69,11 @@ public class GUI extends Application {
 				Image image = SwingFXUtils.toFXImage(ImageIO.read(file), null);
 
 				imgview.setImage(image);
+				imgview.setFitWidth(450);
+				imgview.setFitHeight(500);
+				
+				imageContainer.getChildren().clear();
+				imageContainer.getChildren().add(imgview);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -76,21 +83,44 @@ public class GUI extends Application {
 	private void sepButton() {
 		sepButt.setOnMouseClicked(e -> {
 			sub.sepia();
+			newImage();
 		});
 	}
 
 	private void grayButton() {
 		grayButt.setOnMouseClicked(e -> {
 			sub.grayscale();
+			newImage();
 		});
 	}
 
 	private void negButton() {
 		negButt.setOnMouseClicked(e -> {
 			sub.negative();
+			newImage();
 		});
 	}
 
+	private void newImage(){
+		String fileName = JOptionPane.showInputDialog(null,
+				"File Name: ");
+		sub.writeImage(fileName);
+		File newFile = new File(fileName);
+		try{
+			
+		Image image = SwingFXUtils.toFXImage(ImageIO.read(newFile), null);
+		ImageView newImage = new ImageView();
+		newImage.setImage(image);
+		newImage.setFitWidth(450);
+		newImage.setFitHeight(500);
+		
+		imageContainer.getChildren().clear();
+		imageContainer.getChildren().addAll(imgview, newImage);
+		} catch (Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
