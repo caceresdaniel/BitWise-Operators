@@ -59,6 +59,8 @@ public class GUI extends Application {
 		sepButton();
 		grayButton();
 		negButton();
+		enButton();
+		readButton();
 
 		primaryStage.setScene(sc);
 		primaryStage.show();
@@ -86,6 +88,19 @@ public class GUI extends Application {
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
+		});
+	}
+	
+	private void enButton(){
+		enButt.setOnMouseClicked(e->{
+			String message = JOptionPane.showInputDialog(null, "Message you wish to hide: ");
+			sub.hideMessage(message);
+		});
+	}
+	
+	private void readButton(){
+		readButt.setOnMouseClicked(e->{
+			
 		});
 	}
 
