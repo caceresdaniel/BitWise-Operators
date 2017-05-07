@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class GUI extends Application{
 	
-	File file = new File("negativecat.ppm");
+	File file = new File("sepiacat.ppm");
 	SubPPMImage sub = new SubPPMImage(file);
 
 	@Override
@@ -39,7 +39,9 @@ public class GUI extends Application{
 	
 	public void main(){
 
-		sub.negative();
+		//sub.negative();
+		//sub.grayscale();
+		sub.sepia();
 	}
 	
 	public static void main(String[] args) {
