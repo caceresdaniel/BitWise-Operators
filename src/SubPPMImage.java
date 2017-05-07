@@ -47,7 +47,6 @@ public class SubPPMImage extends PPMImage {
 			if (bits[i + 2] > 255) {
 				bits[i + 2] = 255;
 			}
-
 		}
 	}
 

@@ -46,7 +46,7 @@ public class GUI extends Application {
 
 		pane.setTop(buttons);
 		pane.setCenter(imageContainer);
-		
+
 		sepButt.getStyleClass().add("button");
 		negButt.getStyleClass().add("button");
 		enButt.getStyleClass().add("button");
@@ -54,8 +54,7 @@ public class GUI extends Application {
 		grabButt.getStyleClass().add("button");
 		readButt.getStyleClass().add("button");
 		pane.getStyleClass().add("pane");
-		
-		
+
 		grabButton();
 		sepButton();
 		grayButton();
