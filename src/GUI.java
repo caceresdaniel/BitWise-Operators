@@ -4,20 +4,26 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import com.sun.org.apache.regexp.internal.REDebugCompiler;
+
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GUI extends Application {
 
 	HBox buttons = new HBox();
 	HBox imageContainer = new HBox();
+	HBox messageBox = new HBox();
+	HBox labels = new HBox();
 
 	BorderPane pane = new BorderPane();
 
@@ -46,6 +52,7 @@ public class GUI extends Application {
 
 		pane.setTop(buttons);
 		pane.setCenter(imageContainer);
+		pane.setBottom(messageBox);
 		buttons.getStyleClass().add("hbox");
 		sepButt.getStyleClass().add("button");
 		negButt.getStyleClass().add("button");
@@ -101,7 +108,11 @@ public class GUI extends Application {
 	
 	private void readButton(){
 		readButt.setOnMouseClicked(e->{
-			sub.recoverMessage();
+			String message = sub.recoverMessage();
+			Label msg = new Label(message);
+			
+			this.messageBox.getChildren().clear();
+			this.messageBox.getChildren().add(msg);
 		});
 	}
 

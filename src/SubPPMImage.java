@@ -73,9 +73,6 @@ public class SubPPMImage extends PPMImage {
 				count++;
 			}
 		}
-
-		System.out.println(message);
-
 		return message;
 	}
 
