@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.ArrayList;
 
 public class SubPPMImage extends PPMImage {
 
@@ -45,8 +46,37 @@ public class SubPPMImage extends PPMImage {
 	}
 
 	public String recoverMessage() {
-		
-		return null;
+		char[] bits = getPixelData();
+		char mask = (char) 1 << 0;
+		String message = "";
+		int count = 0;
+		int zeroCount = 0;
+		char character = '\0';
+
+		for (int i = 0; i < bits.length; i++) {
+			if (zeroCount == 8) {
+				break;
+			}
+			if (count % 8 == 0 && count != 0) {
+				character = (char) (character >> 1);
+				message += character;
+				character = '\0';
+			}
+			if ((bits[i] & mask) > 0) {
+				character = (char) (character | mask);
+				character = (char) (character << 1);
+				zeroCount = 0;
+				count++;
+			} else if ((bits[i] & mask) == 0) {
+				character = (char) (character << 1);
+				zeroCount++;
+				count++;
+			}
+		}
+
+		System.out.println(message);
+
+		return message;
 	}
 
 	public void grayscale() {

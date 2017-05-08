@@ -101,7 +101,7 @@ public class GUI extends Application {
 	
 	private void readButton(){
 		readButt.setOnMouseClicked(e->{
-			
+			sub.recoverMessage();
 		});
 	}
 
