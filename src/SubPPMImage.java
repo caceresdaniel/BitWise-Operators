@@ -16,6 +16,9 @@ public class SubPPMImage extends PPMImage {
 
 		int count = 8;
 		int bitIndex = 0;
+		for (int check = 0; check < message.length() * 8; check++) {
+			System.out.println((int) bits[check]);
+		}
 
 		for (int index = 0; index < message.length(); index++) {
 			count = 8;
@@ -33,6 +36,12 @@ public class SubPPMImage extends PPMImage {
 			}
 
 		}
+
+		System.out.println("start of changes");
+		for (int chck = 0; chck < message.length() * 8; chck++) {
+			System.out.println((int) bits[chck]);
+		}
+
 	}
 
 	public String recoverMessage() {
