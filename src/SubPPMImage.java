@@ -7,7 +7,32 @@ public class SubPPMImage extends PPMImage {
 	}
 
 	public void hideMessage(String message) {
+		char maskOn = (char) 1 << 0; // use |
+		char maskOff = (char) ~(1 << 0); // use &
 
+		message += "\0";
+
+		char[] bits = getPixelData();
+
+		int count = 8;
+		int bitIndex = 0;
+
+		for (int index = 0; index < message.length(); index++) {
+			count = 8;
+			for (int i = 0; i < 8; i++) {
+
+				char mask = (char) (1 << ((count) - 1));
+
+				if ((message.charAt(index) & mask) == 0) {
+					bits[bitIndex] = (char) (bits[bitIndex] & maskOff);
+				} else {
+					bits[bitIndex] = (char) (bits[bitIndex] | maskOn);
+				}
+				bitIndex++;
+				count--;
+			}
+
+		}
 	}
 
 	public String recoverMessage() {

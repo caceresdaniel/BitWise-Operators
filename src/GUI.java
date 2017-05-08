@@ -46,7 +46,7 @@ public class GUI extends Application {
 
 		pane.setTop(buttons);
 		pane.setCenter(imageContainer);
-
+		buttons.getStyleClass().add("hbox");
 		sepButt.getStyleClass().add("button");
 		negButt.getStyleClass().add("button");
 		enButt.getStyleClass().add("button");
@@ -80,8 +80,8 @@ public class GUI extends Application {
 				Image image = SwingFXUtils.toFXImage(ImageIO.read(file), null);
 
 				imgview.setImage(image);
-				imgview.setFitWidth(450);
-				imgview.setFitHeight(500);
+				imgview.setFitWidth(550);
+				imgview.setFitHeight(700);
 
 				imageContainer.getChildren().clear();
 				imageContainer.getChildren().add(imgview);
@@ -95,6 +95,7 @@ public class GUI extends Application {
 		enButt.setOnMouseClicked(e->{
 			String message = JOptionPane.showInputDialog(null, "Message you wish to hide: ");
 			sub.hideMessage(message);
+			newImage();
 		});
 	}
 	
@@ -134,8 +135,8 @@ public class GUI extends Application {
 			Image image = SwingFXUtils.toFXImage(ImageIO.read(newFile), null);
 			ImageView newImage = new ImageView();
 			newImage.setImage(image);
-			newImage.setFitWidth(450);
-			newImage.setFitHeight(500);
+			newImage.setFitWidth(550);
+			newImage.setFitHeight(700);
 
 			imageContainer.getChildren().clear();
 			imageContainer.getChildren().addAll(imgview, newImage);

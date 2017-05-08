@@ -1,10 +1,15 @@
 .button{
 	-fx-background-color: #000000;
 	-fx-text-fill: #FFFFFF;
-	-fx-border-color: #FFFFFF;
+	-fx-border-color: #000000;
 }
 .pane{
-	-fx-pref-height: 600;
-	-fx-pref-width: 900;
-	-fx-background-color:#000000;
+	-fx-pref-height: 800;
+	-fx-pref-width: 1100;
+	-fx-background-color:#2f2f2f;
+}
+.hbox{
+	-fx-pref-width:900;
+	-fx-pref-height:32;
+	-fx-background-color: #000000;
 }

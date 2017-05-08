@@ -122,3 +122,29 @@ Grading
     25 Points: Correctly convert an image to Sepia.
     25 Points: Correctly convert an image to Negative.
     25 Points: Create a GUI to show the results.  Use JFileChooser to select any input files.
+     
+count: 8test: 0
+count: 7test: 1
+count: 6test: 2
+count: 5test: 3
+count: 4test: 4
+count: 3test: 5
+count: 2test: 6
+count: 1test: 7
+
+SCRAPPED CODE - MIGHT NEED LATER
+
+	for (int index = 0; index < message.length(); index++) {
+			for (int i = 0; i < message.length() * 8; i++) {
+				if (i % 8 == 0 && count != 8) {
+					char mask = (char) (1 << (count - 1));
+					if ((message.charAt(index) & mask) == 0) {
+
+					}
+					count = 8;
+				} else {
+
+					count--;
+				}
+			}
+		}
