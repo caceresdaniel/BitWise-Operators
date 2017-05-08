@@ -45,6 +45,7 @@ public class SubPPMImage extends PPMImage {
 	}
 
 	public String recoverMessage() {
+		
 		return null;
 	}
 
