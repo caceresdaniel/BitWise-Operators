@@ -4,28 +4,28 @@
 	-fx-border-color: #000000;
 }
 .pane{
-	-fx-pref-height: 820;
-	-fx-pref-width: 1100;
+	-fx-pref-height: 820.0;
+	-fx-pref-width: 1100.0;
 	-fx-background-image: url("bckgrnd.png"); 
 }
 .hbox{
-	-fx-pref-width:800;
-	-fx-pref-height:32;
+	-fx-pref-width:800.0;
+	-fx-pref-height:32.0;
 	-fx-background-color: #000000;
 }
 .txt{
 	-fx-text-fill: #ffffff;
-	-fx-font-size: 220%;
+	-fx-font-size: 220.0%;
 }
 .text2{
 	-fx-text-fill: #000000;
-	-fx-font-size: 220%;
+	-fx-font-size: 220.0%;
 }
 .hboxlabels{
-	-fx-pref-width: 1100;
+	-fx-pref-width: 1100.0;
 	-fx-background-color: #ffffff;
 }
 .lbl{
-	-fx-padding: 0, 550, 0, 0;
-	-fx-pref-width:550;
+	-fx-padding: 0.0, 550.0, 0.0, 0.0;
+	-fx-pref-width:550.0;
 }
