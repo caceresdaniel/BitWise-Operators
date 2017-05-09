@@ -4,8 +4,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import com.sun.org.apache.regexp.internal.REDebugCompiler;
-
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
@@ -15,7 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GUI extends Application {
@@ -23,6 +21,9 @@ public class GUI extends Application {
 	HBox buttons = new HBox();
 	HBox imageContainer = new HBox();
 	HBox messageBox = new HBox();
+	HBox label1 = new HBox();
+	HBox label2 = new HBox();
+	VBox vbox = new VBox();
 	HBox labels = new HBox();
 
 	BorderPane pane = new BorderPane();
@@ -50,9 +51,13 @@ public class GUI extends Application {
 
 		buttons.getChildren().addAll(grabButt, enButt, readButt, grayButt, negButt, sepButt);
 
+		labels.getChildren().addAll(label1, label2);
+		
+		
+		vbox.getChildren().addAll(labels, imageContainer, messageBox);
+		
 		pane.setTop(buttons);
-		pane.setCenter(imageContainer);
-		pane.setBottom(messageBox);
+		pane.setCenter(vbox);
 		buttons.getStyleClass().add("hbox");
 		sepButt.getStyleClass().add("button");
 		negButt.getStyleClass().add("button");
@@ -61,7 +66,9 @@ public class GUI extends Application {
 		grabButt.getStyleClass().add("button");
 		readButt.getStyleClass().add("button");
 		pane.getStyleClass().add("pane");
-
+		label1.getStyleClass().add("lbl");
+		
+		
 		grabButton();
 		sepButton();
 		grayButton();
@@ -90,11 +97,21 @@ public class GUI extends Application {
 				imgview.setFitWidth(550);
 				imgview.setFitHeight(700);
 
+				this.messageBox.getChildren().clear();
 				imageContainer.getChildren().clear();
 				imageContainer.getChildren().add(imgview);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
+			
+			Label labelForOrigin = new Label("Original");
+			labelForOrigin.getStyleClass().add("text2");
+			
+			label1.getChildren().clear();
+			labels.getChildren().clear();
+			label1.getChildren().add(labelForOrigin);
+			labels.getChildren().add(label1);
+			
 		});
 	}
 	
@@ -109,10 +126,14 @@ public class GUI extends Application {
 	private void readButton(){
 		readButt.setOnMouseClicked(e->{
 			String message = sub.recoverMessage();
+			
 			Label msg = new Label(message);
+			msg.getStyleClass().add("txt");
+			Label lbl = new Label("Hidden Message: ");
+			lbl.getStyleClass().add("text2");
 			
 			this.messageBox.getChildren().clear();
-			this.messageBox.getChildren().add(msg);
+			this.messageBox.getChildren().addAll(lbl, msg);
 		});
 	}
 
@@ -134,6 +155,7 @@ public class GUI extends Application {
 		negButt.setOnMouseClicked(e -> {
 			sub.negative();
 			newImage();
+			
 		});
 	}
 
@@ -149,11 +171,19 @@ public class GUI extends Application {
 			newImage.setFitWidth(550);
 			newImage.setFitHeight(700);
 
+			this.messageBox.getChildren().clear();
 			imageContainer.getChildren().clear();
 			imageContainer.getChildren().addAll(imgview, newImage);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		
+		Label lblForNew = new Label("After Changes");
+		lblForNew.getStyleClass().add("text2");
+		
+		label2.getChildren().clear();
+		label2.getChildren().add(lblForNew);
+		labels.getChildren().add(label2);
 	}
 
 	public static void main(String[] args) {

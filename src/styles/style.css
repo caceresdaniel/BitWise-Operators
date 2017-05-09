@@ -4,12 +4,28 @@
 	-fx-border-color: #000000;
 }
 .pane{
-	-fx-pref-height: 800;
+	-fx-pref-height: 820;
 	-fx-pref-width: 1100;
-	-fx-background-color:#2f2f2f;
+	-fx-background-image: url("bckgrnd.png"); 
 }
 .hbox{
-	-fx-pref-width:900;
+	-fx-pref-width:800;
 	-fx-pref-height:32;
 	-fx-background-color: #000000;
+}
+.txt{
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 220%;
+}
+.text2{
+	-fx-text-fill: #000000;
+	-fx-font-size: 220%;
+}
+.hboxlabels{
+	-fx-pref-width: 1100;
+	-fx-background-color: #ffffff;
+}
+.lbl{
+	-fx-padding: 0, 550, 0, 0;
+	-fx-pref-width:550;
 }

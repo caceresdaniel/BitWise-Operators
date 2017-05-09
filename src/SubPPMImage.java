@@ -1,5 +1,4 @@
 import java.io.File;
-import java.util.ArrayList;
 
 public class SubPPMImage extends PPMImage {
 
@@ -17,14 +16,10 @@ public class SubPPMImage extends PPMImage {
 
 		int count = 8;
 		int bitIndex = 0;
-		for (int check = 0; check < message.length() * 8; check++) {
-			System.out.println((int) bits[check]);
-		}
 
 		for (int index = 0; index < message.length(); index++) {
 			count = 8;
 			for (int i = 0; i < 8; i++) {
-
 				char mask = (char) (1 << ((count) - 1));
 
 				if ((message.charAt(index) & mask) == 0) {
@@ -35,14 +30,7 @@ public class SubPPMImage extends PPMImage {
 				bitIndex++;
 				count--;
 			}
-
 		}
-
-		System.out.println("start of changes");
-		for (int chck = 0; chck < message.length() * 8; chck++) {
-			System.out.println((int) bits[chck]);
-		}
-
 	}
 
 	public String recoverMessage() {
